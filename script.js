@@ -1,4 +1,5 @@
 const addBtn = document.getElementById('add')
+const removeAllBtn = document.getElementById('clear')
 
 const notes = JSON.parse(localStorage.getItem('notes'))
 
@@ -35,6 +36,17 @@ function addNewNote(text = '') {
 
     updateLS()
   })
+
+  removeAllBtn.addEventListener('click', () => removeAllNotes())
+  function removeAllNotes() {
+    const notes = document.querySelectorAll('.note')
+
+    notes.forEach((note) => {
+      note.remove()
+    })
+
+    updateLS()
+  }
 
   editBtn.addEventListener('click', () => {
     main.classList.toggle('hidden')
