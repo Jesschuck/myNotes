@@ -1,14 +1,18 @@
 const addBtn = document.getElementById('add')
 const removeAllBtn = document.getElementById('clear')
 
+/* Recupera as notas do localStorage convertendo a string JSON armazenada em 'notes' para um array. 
+Se houver notas, a função addNewNote é chamada para cada nota, adicionando-as à interface. */
 const notes = JSON.parse(localStorage.getItem('notes'))
 
 if (notes) {
   notes.forEach((note) => addNewNote(note))
 }
 
+//Quando o botão é clicado, a função addNewNote é chamada criando assim uma nova nota.
 addBtn.addEventListener('click', () => addNewNote())
 
+//Cria uma nova nota com botões de edição e exclusão.
 function addNewNote(text = '') {
   const note = document.createElement('div')
   note.classList.add('note')
@@ -34,10 +38,13 @@ function addNewNote(text = '') {
   deleteBtn.addEventListener('click', () => {
     note.remove()
 
-    updateLS()
+    updateLS() //atualiza o localStorage
   })
 
+  //A função removeAllNotes é chamada quando o botão "Remover Todas as Notas" é clicado. A nota é adicionada ao corpo do documento.
   removeAllBtn.addEventListener('click', () => removeAllNotes())
+
+  //Remove todas as notas presentes. Ela seleciona todas as notas, itera sobre elas e as remove.
   function removeAllNotes() {
     const notes = document.querySelectorAll('.note')
 
@@ -64,6 +71,8 @@ function addNewNote(text = '') {
   document.body.appendChild(note)
 }
 
+/*Esta função obtém todos os elementos <textarea> presentes no documento, extrai seus valores para um array (notes), 
+converte esse array para uma string JSON e armazena no localStorage com a chave 'notes'. */
 function updateLS() {
   const notesText = document.querySelectorAll('textarea')
 

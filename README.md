@@ -54,3 +54,5 @@ A adição da funcionalidade de remover todas as notas exigiu a manipulação ef
 ## Etiquetas
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+Esse projeto foi baseado no curso "50 Projects In 50 Days - HTML, CSS & JavaScript" da Udemy.
