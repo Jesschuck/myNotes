@@ -9,6 +9,8 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
     margin: 0;
     padding-top: 3rem;
 }
@@ -40,7 +42,7 @@ body {
 .note {
     background-color: #fff;
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
-    margin: 30px 20px;
+    margin: 20px;
     height: 200px;
     width: 300px;
 }
@@ -66,7 +68,7 @@ body {
     font-family: inherit;
     font-size: 1rem;
     border: none;
-    height: 200px;
+    height: 100px;
     width: 100%;
     padding: 20px;
 }
@@ -77,4 +79,14 @@ body {
 
 .hidden {
     display: none;
+}.clear {
+    position: fixed;
+    top: 3.2rem;
+    right: 1rem;
+    background-color: #808fd8;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
 }
