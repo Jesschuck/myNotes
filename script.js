@@ -5,6 +5,8 @@ const removeAllBtn = document.getElementById('clear')
 Se houver notas, a função addNewNote é chamada para cada nota, adicionando-as à interface. */
 const notes = JSON.parse(localStorage.getItem('notes'))
 
+// var isEdit = false
+
 if (notes) {
   notes.forEach((note) => addNewNote(note))
 }
@@ -19,7 +21,10 @@ function addNewNote(text = '') {
 
   note.innerHTML = `
     <div class="tools">
-        <button class="edit"><i class="fas fa-edit"></i></button>
+        <button class="edit">
+          <i class="fas fa-edit ${text ? '' : 'hidden'}"></i>
+          <i class="fas fa-pen-square ${text ? 'hidden' : ''}"></i>
+        </button>
         <button class="delete"><i class="fas fa-trash-alt"></i></button>
     </div>
 
@@ -31,6 +36,8 @@ function addNewNote(text = '') {
   const deleteBtn = note.querySelector('.delete')
   const main = note.querySelector('.main')
   const textArea = note.querySelector('textarea')
+  const editIcon = editBtn.querySelector('.fa-edit')
+  const penSquareIcon = editBtn.querySelector('.fa-pen-square')
 
   textArea.value = text
   main.innerHTML = marked(text)
@@ -41,23 +48,11 @@ function addNewNote(text = '') {
     updateLS() //atualiza o localStorage
   })
 
-  //A função removeAllNotes é chamada quando o botão "Remover Todas as Notas" é clicado. A nota é adicionada ao corpo do documento.
-  removeAllBtn.addEventListener('click', () => removeAllNotes())
-
-  //Remove todas as notas presentes. Ela seleciona todas as notas, itera sobre elas e as remove.
-  function removeAllNotes() {
-    const notes = document.querySelectorAll('.note')
-
-    notes.forEach((note) => {
-      note.remove()
-    })
-
-    updateLS()
-  }
-
   editBtn.addEventListener('click', () => {
     main.classList.toggle('hidden')
     textArea.classList.toggle('hidden')
+    editIcon.classList.toggle('hidden')
+    penSquareIcon.classList.toggle('hidden')
   })
 
   textArea.addEventListener('input', (e) => {
@@ -69,6 +64,20 @@ function addNewNote(text = '') {
   })
 
   document.body.appendChild(note)
+}
+
+//A função removeAllNotes é chamada quando o botão "Remover Todas as Notas" é clicado. A nota é adicionada ao corpo do documento.
+removeAllBtn.addEventListener('click', () => removeAllNotes())
+
+//Remove todas as notas presentes. Ela seleciona todas as notas, itera sobre elas e as remove.
+function removeAllNotes() {
+  const notes = document.querySelectorAll('.note')
+
+  notes.forEach((note) => {
+    note.remove()
+  })
+
+  updateLS()
 }
 
 /*Esta função obtém todos os elementos <textarea> presentes no documento, extrai seus valores para um array (notes), 
