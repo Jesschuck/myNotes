@@ -1,4 +1,4 @@
-# Projeto My Notes
+# My Notes
 
 The project is an exciting web application that enables users to create, modify, and remove notes in a highly interactive way. With the help of **HTML, CSS, and JavaScript**, the application incorporates various useful features, including viewing notes in a text box format and saving data through local storage **(localStorage)**. The primary objective of this project is to provide users with a straightforward and user-friendly way to manage their notes efficiently.
 
